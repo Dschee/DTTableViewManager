@@ -18,5 +18,16 @@ class TableViewController: UITableViewController, DTTableViewManageable {
         manager.startManagingWithDelegate(self)
         manager.registerCellClass(StringCell)
         manager.memoryStorage.addItems(["1","2","3"])
+        manager.cellSelection(TableViewController.selectedText)
+        
+    }
+    
+    func selectedText(cell: StringCell, text: String, indexPath: NSIndexPath) {
+        
+        let alertCtrl = UIAlertController(title: "Chosen text:", message: text, preferredStyle: .Alert)
+        let okayAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+        alertCtrl.addAction(okayAction)
+        
+        self.presentViewController(alertCtrl, animated: true, completion: nil)
     }
 }
